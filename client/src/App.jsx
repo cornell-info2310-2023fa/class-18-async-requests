@@ -9,6 +9,11 @@ import AccordionPanel from './components/AccordionPanel';
 
 export default function App() {
 
+  const [alert, setAlert] = useState("test test test");
+  useEffect(() => {
+    console.log("ready to request alert data");
+  }, []);
+
   const [panelActiveIndex, setPanelActiveIndex] = useState(-1);
   const [appearance, setAppearance] = useState({
     isDarkMode: false,
@@ -43,6 +48,12 @@ export default function App() {
         color: (appearance.isDarkMode ? 'white' : 'black'),
         fontSize: appearance.fontSize
       }}>
+
+      {alert && (
+        <AlertPanel>
+          {alert}
+        </AlertPanel>
+      )}
 
       <DarkModeSwitcher onSwitchDarkMode={(mode) => setAppearance(
         {
